@@ -2,6 +2,7 @@ from pathlib import Path
 import hashlib
 
 dir = Path("input")
+email = 'alykhanzhambyl@gmail.com'
 hashes = []
 
 for f in dir.iterdir():
@@ -10,10 +11,15 @@ for f in dir.iterdir():
     for i in h:
         k *= (int(i, 16) + 1)
     hashes.append((k,h))
-    
+hashes.sort()
 
-for i in hashes:
-    print(i)
+s = email + "".join(h for k,h in hashes)
+res = hashlib.sha3_256((email + "".join(h for k,h in hashes)).encode("utf-8")).hexdigest()
+
+print(res)
+
+# for i in hashes:
+#     print(f'{i}\n')
     
 
 # h = dir / "file_00.data"
