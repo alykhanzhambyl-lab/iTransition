@@ -1,0 +1,15 @@
+# virtual env
+.venv/
+venv/
+env/
+
+# python cashe
+__pycache__/
+*.eng
+*.рус
+.env
+
+*.db
+*.csv
+*.yaml
+*.parquet
