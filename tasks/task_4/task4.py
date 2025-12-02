@@ -6,22 +6,26 @@ from datetime import datetime
 from dateutil import parser
 from orders import clean_orders_df
 from users import clean_users_df
+from revenue_m import ext_date, any_price_to_dollar
 
 
 books_path = r"C:\iTransition\tasks\task_4\data\DATA1\books.yaml"
 with open(books_path ,encoding = "utf-8") as f:
     data_books = yaml.safe_load(f)
 
-users_raw_df = pd.read_csv(r"C:\iTransition\tasks\task_4\data\DATA1\users.csv", 
-                           na_values=["NULL", "null", ""])
+users_raw_df = pd.read_csv(r"C:\iTransition\tasks\task_4\data\DATA1\users.csv", na_values=["NULL", "null", ""])
 orders_raw_df = pd.read_parquet(r"C:\iTransition\tasks\task_4\data\DATA1\orders.parquet")
 books_raw_df = pd.DataFrame(data_books)
 
+
+
 def main():
-    orders_df = clean_orders_df(orders_raw_df)
-    users_df = clean_users_df(users_raw_df)
-    orders_df.to_csv("orders_clean.csv", index=False)
-    users_df.to_csv("users_clean.csv", index=False)
+    # orders_df = clean_orders_df(orders_raw_df)
+    # users_df = clean_users_df(users_raw_df)
+    # orders_df = any_price_to_dollar(orders_df)
+    # orders_df = ext_date(orders_df)
+    # orders_df.to_csv("orders_clean.csv", index=False)
+    # # users_df.to_csv("users_clean.csv", index=False)
 
 
 

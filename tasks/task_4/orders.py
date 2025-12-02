@@ -48,17 +48,11 @@ def shipping_norm(s):
 
 def clean_orders_df(orders_raw_df):
     df = orders_raw_df.copy()
-
-    # timestamp
     if "timestamp" in df.columns:
         df["timestamp_raw"] = df["timestamp"].astype(str)
         df["timestamp"] = parse_timestamp(df["timestamp_raw"])
-
-    # unit_price
     if "unit_price" in df.columns:
         df["unit_price_norm"] = df["unit_price"].apply(unit_price_norm)
-
-    # shipping
     if "shipping" in df.columns:
         df["shipping_norm"] = shipping_norm(df["shipping"])
 
