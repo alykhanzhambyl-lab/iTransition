@@ -51,10 +51,8 @@ def clean_orders_df(orders_raw_df):
     if "timestamp" in df.columns:
         df["timestamp_raw"] = df["timestamp"].astype(str)
         df["timestamp"] = parse_timestamp(df["timestamp_raw"])
-    if "unit_price" in df.columns:
-        df["unit_price_norm"] = df["unit_price"].apply(unit_price_norm)
-    if "shipping" in df.columns:
-        df["shipping_norm"] = shipping_norm(df["shipping"])
+    if "unit_price" in df.columns: df["unit_price_norm"] = df["unit_price"].apply(unit_price_norm)
+    if "shipping" in df.columns: df["shipping_norm"] = shipping_norm(df["shipping"])
 
     return df
 

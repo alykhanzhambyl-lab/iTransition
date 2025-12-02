@@ -1,7 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import re
-import heapq
 import numpy as np
 
 def ext_date(orders_df, ts = "timestamp", orders_dt = "date"):
@@ -27,4 +26,4 @@ def top5_days(orders_df, paid = "paid_price", ord_date = "date"):
     daily = orders_df.groupby(ord_date)[paid].sum()
     top5 = daily.nlargest(5)
     res = [{day: round(float(total), 3) for day, total in top5.items()}]
-    return print(res)
+    return res
