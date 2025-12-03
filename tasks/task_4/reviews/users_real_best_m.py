@@ -45,7 +45,7 @@ def best_buyer_metrics(
     best_user_ids =users_df[users_df[real_col] == best_real_user_id][users_id_col].tolist()
     return best_real_user_id, best_total_spent, best_user_ids
 
-def plot_daily_revenue(orders_df, date_col = "date", paid_col: str = "paid_price",title = "Daily Revenue",):
+def plot_daily_revenue(orders_df, date_col = "date", paid_col: str = "paid_price",title = "Daily Revenue",ret_df:bool=False):
     daily_revenue = orders_df.groupby(date_col)[paid_col].sum().reset_index().rename(columns={paid_col: "daily_revenue"})    
     plt.figure(figsize=(10, 4))
     plt.plot(daily_revenue[date_col], daily_revenue["daily_revenue"])
@@ -55,3 +55,6 @@ def plot_daily_revenue(orders_df, date_col = "date", paid_col: str = "paid_price
     plt.xticks(rotation=45)
     plt.tight_layout()
     plt.show()
+
+    if ret_df:
+        return daily_revenue
