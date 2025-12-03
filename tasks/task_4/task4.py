@@ -84,7 +84,7 @@ def main():
 
 
     order_1_data, users_1_data, books_1_data, metric_1 = run(orders_raw_df, users_raw_df, books_raw_df, label="DATA1")
-    def pretty_print_metrics(m: dict):
+    def print_metrics(m: dict):
         print("\nРезультаты:", m["label"], "\n")
         print("Топ-5 дней по выручке:")
         for d, rev in m["top5_days"][0].items():
@@ -102,7 +102,7 @@ def main():
         if m.get("best_buyer_all_names"):
             print(f"   all names: {m['best_buyer_all_names']}")
     
-    pretty_print_metrics(metric_1)
+    print_metrics(metric_1)
 
 
 
